@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ObservableCollection.Views.PersonaPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="{Binding Id}"></Label>
+                <Label Text="Nombre"/>
+                <Entry Text="{Binding Nombre}"/>
+                <Label Text="Apellido"/>
+                <Entry Text="{Binding Apellido}"/>
+                <Label Text="Edad"/>
+                <Entry Text="{Binding Edad}" Keyboard="Numeric"/>
+                <Label Text="{Binding NombreCompleto}"/>
+                <Button Text="GUARDAR" Command="{Binding GuardarCommad}"/>
+                <Button Text="MODIFICAR" Command="{Binding ModificarCommand}"/>
+                <Button Text="ELIMINAR" Command="{Binding EliminarCommand}"/>
+                <Button Text="LIMPIAR" Command="{Binding LimpiarCommand}"/>
+                <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+
+                <ListView x:Name="LvPersonas" ItemsSource="{Binding Personas}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Edad}" Detail="{Binding NombreCompleto}"></TextCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>
